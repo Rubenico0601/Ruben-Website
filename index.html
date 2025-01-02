@@ -21,7 +21,10 @@
         var wzrk = document.createElement("script");
         wzrk.type = "text/javascript";
         wzrk.async = true;
-        wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';         
+        wzrk.src =
+          ("https:" == document.location.protocol
+            ? "https://d2r1yp2w7bby2u.cloudfront.net"
+            : "http://static.clevertap.com") + "/js/clevertap.min.js";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(wzrk, s);
       })();
@@ -168,15 +171,14 @@
     <h2 id="test"></h2>
 
     <script>
-
       function pageLoad() {
         const fullUrl = window.location.href;
 
         // Extract the base URL (before .io)
-        const baseUrl = fullUrl.split(".io")[0] + ".io";
+        const baseUrl = fullUrl.split(":5500")[0] + ":5500";
 
         // Extract the path (everything after .io)
-        const path = fullUrl.split(".io")[1] || "/";
+        const path = fullUrl.split(":5500")[1] || "/";
 
         const props = {
             "URL": fullUrl,
@@ -190,10 +192,11 @@
             clevertap.event.push("Page Viewed", props);
           }
 
-
+          
       }
 
       window.onload = pageLoad;
+
       function pushEvent() {
         const inputField = document.getElementById("eventName");
         const value = inputField.value.trim(); // Trim removes any leading/trailing spaces
@@ -340,7 +343,6 @@
           rejectButtonText: "No thanks",
           okButtonColor: "#F28046",
           askAgainTimeInSeconds: 5,
-          "serviceWorkerPath": "clevertap_sw.js" // path to your custom service worker file
         });
       };
 

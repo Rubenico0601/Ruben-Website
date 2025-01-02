@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lead Generation</title>
+    <script type="text/javascript">
+      var clevertap = {
+        event: [],
+        profile: [],
+        account: [],
+        onUserLogin: [],
+        notifications: [],
+        privacy: [],
+      };
+      clevertap.account.push({ id: "TEST-K9K-Z94-R46Z" });
+      clevertap.privacy.push({ optOut: false });
+      clevertap.privacy.push({ useIP: false });
+      (function () {
+        var wzrk = document.createElement("script");
+        wzrk.type = "text/javascript";
+        wzrk.async = true;
+        wzrk.src =
+          ("https:" == document.location.protocol
+            ? "https://d2r1yp2w7bby2u.cloudfront.net"
+            : "http://static.clevertap.com") + "/js/clevertap.min.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(wzrk, s);
+      })();
+    </script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f9f9f9;
+      }
+      .container {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ddd;
+        background: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      .options {
+        margin-top: 20px;
+      }
+      .options label {
+        display: block;
+        margin: 10px 0;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <label
+        for="communication-options"
+        style="font-size: 18px; font-weight: bold"
+      >
+        How would you like us to communicate with you?
+      </label>
+      <div class="options" id="communication-options">
+        <label>
+          <input type="radio" name="communication" value="newsletter" />
+          Newsletter
+        </label>
+        <label>
+          <input type="radio" name="communication" value="blogs" /> Blogs
+        </label>
+        <label>
+          <input type="radio" name="communication" value="emails" /> Emails
+        </label>
+        <label>
+          <input type="radio" name="communication" value="sms" /> SMS
+        </label>
+      </div>
+      <button onclick="getSelectedValue()">Submit</button>
+    </div>
+  </body>
+  <script>
+    function getSelectedValue() {
+      const options = document.getElementsByName("communication");
+      let selectedValue = "";
+      for (const option of options) {
+        if (option.checked) {
+          selectedValue = option.value;
+          break;
+        }
+      }
+      clevertap.profile.push({
+        Site: {
+          "Selected Channel": selectedValue,
+        },
+      });
+    }
+  </script>
+</html>
